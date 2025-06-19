@@ -53,10 +53,16 @@ ORDER BY DATETIME DESC
 LIMIT 1;
 ```
 
+```SQL
+SELECT MAX(DATETIME) AS "시간"
+FROM ANIMAL_INS;
+```
+
 ---
 
 ## 결과
 
 ![결과](./assets/스크린샷%202025-06-19%2013.26.40.png)
+![결과](./assets/스크린샷%202025-06-19%2013.53.23.png)
 
 ---
