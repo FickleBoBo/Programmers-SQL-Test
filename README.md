@@ -28,6 +28,8 @@
 8. LIMIT
 ```
 
+---
+
 ## 연산자
 
 ### [산술 연산자](https://dev.mysql.com/doc/refman/8.4/en/non-typed-operators.html)
@@ -86,3 +88,43 @@
 ### `expr IN (value, ...)`
 
 - `expr`에 대해 리스트에 일치하는 값이 있으면 1, 아니면 0 반환
+
+---
+
+## 날짜/시간
+
+### 데이터 타입
+
+- `DATE`
+  - 날짜만 저장(YYYY-MM-DD)
+- `DATETIME`
+  - 날짜와 시간 저장(YYYY-MM-DD HH:MM:SS)
+
+### 함수
+
+- `YEAR(expr)`
+  - `expr`에서 연도 추출
+- `MONTH(expr)`
+- `expr`에서 월 추출
+- `DAY(expr)`
+  - `expr`에서 일 추출
+- `HOUR(expr)`
+  - `expr`에서 시 추출
+- `MINUTE(expr)`
+  - `expr`에서 분 추출
+- `SECOND(expr)`
+  - `expr`에서 초 추출
+- `DATE_FORMAT(expr, format)`
+  - `expr`을 `format`으로 포맷팅
+  - `%Y`
+    - 4자리 연도
+  - `%m`
+    - 2자리 월
+  - `%d`
+    - 일
+  - `%H`
+    - 시
+  - `%i`
+    - 분
+  - `%s`
+    - 초
