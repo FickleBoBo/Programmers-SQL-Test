@@ -105,7 +105,7 @@
 - `YEAR(expr)`
   - `expr`에서 연도 추출
 - `MONTH(expr)`
-- `expr`에서 월 추출
+  - `expr`에서 월 추출
 - `DAY(expr)`
   - `expr`에서 일 추출
 - `HOUR(expr)`
