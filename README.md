@@ -128,6 +128,8 @@
     - 분
   - `%s`
     - 초
+- `DATEDIFF(date1, date2)`
+  - 두 날짜의 차 반환(date1 - date2)
 
 ---
 
