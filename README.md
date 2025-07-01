@@ -39,6 +39,9 @@
 - `*`
 - `/`
 - `%`
+- `&`
+- `|`
+- `~`
 
 ### [비교 연산자](https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html)
 
