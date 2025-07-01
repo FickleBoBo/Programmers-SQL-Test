@@ -58,19 +58,19 @@
 - `OR`
 - `NOT`
 
-### `expr BETWEEN min AND max`
+### [`expr BETWEEN min AND max`](https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#operator_between)
 
 - `min <= expr AND expr <= max`와 동일하며 조건을 만족하면 1, 아니면 0 반환
 
-### `IS NULL`, `IS NOT NULL`
+### [`IS NULL`](https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#operator_is-null), [`IS NOT NULL`](https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#operator_is-not-null)
 
 - `NULL` 여부에 대한 비교에서 사용하며 조건을 만족하면 1, 아니면 0 반환
 
-### `ISNULL(expr)`
+### [`ISNULL(expr)`](https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#function_isnull)
 
 - `expr`이 `NULL`이면 1, 아니면 0 반환
 
-### `expr LIKE Pattern`
+### [`expr LIKE Pattern`](https://dev.mysql.com/doc/refman/8.4/en/string-comparison-functions.html#operator_like)
 
 - `expr`과 `Pattern`에 대한 패턴 매칭이 되면 1, 아니면 0 반환
 
@@ -88,9 +88,10 @@
 "%test%"
 ```
 
-### `expr IN (value, ...)`
+### [`expr IN (value, ...)`](https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#operator_in)
 
 - `expr`에 대해 리스트에 일치하는 값이 있으면 1, 아니면 0 반환
+- 서브쿼리에 대해서도 사용 가능
 
 ---
 
@@ -105,19 +106,21 @@
 
 ### 함수
 
-- `YEAR(expr)`
+- [`YEAR(expr)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_year)
   - `expr`에서 연도 추출
-- `MONTH(expr)`
+- [`MONTH(expr)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_month)
   - `expr`에서 월 추출
-- `DAY(expr)`
+- [`DAY(expr)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_day)
   - `expr`에서 일 추출
-- `HOUR(expr)`
+- [`HOUR(expr)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_hour)
   - `expr`에서 시 추출
-- `MINUTE(expr)`
+- [`MINUTE(expr)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_minute)
   - `expr`에서 분 추출
-- `SECOND(expr)`
+- [`SECOND(expr)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_second)
   - `expr`에서 초 추출
-- `DATE_FORMAT(expr, format)`
+- [`QUARTER(expr)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_quarter)
+  - `expr`에서 분기 추출
+- [`DATE_FORMAT(expr, format)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_date-format)
   - `expr`을 `format`으로 포맷팅
   - `%Y`
     - 4자리 연도
@@ -131,7 +134,7 @@
     - 분
   - `%s`
     - 초
-- `DATEDIFF(date1, date2)`
+- [`DATEDIFF(date1, date2)`](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-functions.html#function_datediff)
   - 두 날짜의 차 반환(date1 - date2)
 
 ---
@@ -140,16 +143,18 @@
 
 ### 함수
 
-- `LEFT(str, n)`
+- [`LEFT(str, n)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_left)
   - 왼쪽부터 n개 문자
-- `RIGHT(str, n)`
+- [`RIGHT(str, n)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_right)
   - 오른쪽부터 n개 문자
-- `CONCAT(str1, str2, ...)`
+- [`CONCAT(str1, str2, ...)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_concat)
   - 여러 문자열을 합침
+
+---
 
 ## 숫자
 
 ### 함수
 
-- `ROUND(num, digit)`
+- [`ROUND(num, digit)`](https://dev.mysql.com/doc/refman/8.4/en/mathematical-functions.html#function_round)
   - digit에서 num 반올림(생략시 0)
