@@ -30,6 +30,12 @@
 
 ---
 
+## SQL JOIN
+
+<img src="./assets/join.png" width="100%"/>
+
+---
+
 ## 연산자
 
 ### [산술 연산자](https://dev.mysql.com/doc/refman/8.4/en/non-typed-operators.html)
