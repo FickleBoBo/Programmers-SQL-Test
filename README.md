@@ -1,4 +1,11 @@
-# 코딩테스트 SQL 문법
+# 코딩테스트 SQL 문법 정리
+
+## 목차
+
+- [SQL 쿼리 순서](#sql-쿼리-순서)
+- [SQL JOIN](#sql-join)
+
+---
 
 ## SQL 쿼리 순서
 
@@ -10,22 +17,22 @@
 3. JOIN 다른 테이블 ON 조건
 4. WHERE 조건
 5. GROUP BY 컬럼
-6. HAVING 조건
-7. ORDER BY 정렬 조건
-8. LIMIT 개수
+6. HAVING 그룹 조건
+7. ORDER BY 정렬 기준
+8. LIMIT 개수 OFFSET 시작 위치
 ```
 
 ### 실행 순서
 
 ```
 1. FROM
-2. JOIN
+2. JOIN ~ ON ~
 3. WHERE
 4. GROUP BY
 5. HAVING
-6. SELECT
+6. SELECT / DISTINCT
 7. ORDER BY
-8. LIMIT
+8. LIMIT / OFFSET
 ```
 
 ---
@@ -94,14 +101,70 @@
 "%test%"
 ```
 
-### [`expr IN (value, ...)`](https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#operator_in)
+---
 
-- `expr`에 대해 리스트에 일치하는 값이 있으면 1, 아니면 0 반환
-- 서브쿼리에 대해서도 사용 가능
+## 조건
+
+### [`IF(expr1, expr2, expr3)`](https://dev.mysql.com/doc/refman/8.4/en/flow-control-functions.html#function_if)
+
+- `expr1`이 true면 `expr2`, false면 `expr3` 반환
+
+### [`IFNULL(expr1, expr2)`](https://dev.mysql.com/doc/refman/8.4/en/flow-control-functions.html#function_ifnull)
+
+- `expr1`이 null이 아니면 그대로 반환하고 null이면 `expr2` 반환
+
+### [`CASE`](https://dev.mysql.com/doc/refman/8.4/en/flow-control-functions.html#operator_case)
+
+- 조건 분기
+
+```SQL
+CASE value
+  WHEN value1 THEN result1
+  [WHEN value2 THEN result2]
+  ...
+  [ELSE default_result]
+END
+```
+
+```SQL
+CASE
+  WHEN condition1 THEN result1
+  [WHEN condition2 THEN result2]
+  ...
+  [ELSE default_result]
+END
+```
 
 ---
 
-## 날짜/시간
+## 숫자
+
+### 함수
+
+- [`ROUND(X)`, `ROUND(X, D)`](https://dev.mysql.com/doc/refman/8.4/en/mathematical-functions.html#function_round)
+  - 소수점 아래 `D`자리에서 `X`를 반올림(생략시 `D=0`)
+- [`FLOOR(X)`](https://dev.mysql.com/doc/refman/8.4/en/mathematical-functions.html#function_floor)
+  - `X`보다 작은 가장 큰 정수 반환
+
+---
+
+## 문자열
+
+### 함수
+
+- [`LEFT(str, len)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_left)
+  - 왼쪽부터 `len`개 문자
+- [`RIGHT(str, len)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_right)
+  - 오른쪽부터 `len`개 문자
+- [`SUBSTRING`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_substring)
+  - `SUBSTRING(str, pos)` -> `pos`번 문자부터 끝까지
+  - `SUBSTRING(str, pos, len)` -> `pos`번 문자부터 `len`개의 문자
+- [`CONCAT(str1, str2, ...)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_concat)
+  - 여러 문자열을 합침
+
+---
+
+## 날짜 / 시간
 
 ### 데이터 타입
 
@@ -145,22 +208,22 @@
 
 ---
 
-## 문자열
+## 기타
 
-### 함수
+### [`expr IN (value, ...)`](https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#operator_in)
 
-- [`LEFT(str, n)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_left)
-  - 왼쪽부터 n개 문자
-- [`RIGHT(str, n)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_right)
-  - 오른쪽부터 n개 문자
-- [`CONCAT(str1, str2, ...)`](https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_concat)
-  - 여러 문자열을 합침
+- `expr`이 리스트에 존재하면 1(true), 존재하지 않으면 0(false) 반환
+  - ex)
+    - `SELECT 2 IN (0, 3, 5, 7)` -> 0
+    - `SELECT 'wefwf' IN ('wee','wefwf','weg')` -> 1
+- 튜플로 비교도 가능
+  - ex)
+    - `SELECT (3,4) IN ((1,2), (3,4))` -> 1
+    - `SELECT (3,4) IN ((1,2), (3,5))` -> 0
+- `expr NOT IN (value, ...)`로 사용 가능
+
+### [`operand IN (subquery)`](https://dev.mysql.com/doc/refman/8.4/en/any-in-some-subqueries.html)
+
+- 서브쿼리 결과 집합에 사용 가능
 
 ---
-
-## 숫자
-
-### 함수
-
-- [`ROUND(num, digit)`](https://dev.mysql.com/doc/refman/8.4/en/mathematical-functions.html#function_round)
-  - digit에서 num 반올림(생략시 0)
